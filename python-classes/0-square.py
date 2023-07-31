@@ -1,8 +1,12 @@
 #!/usr/bin/python3
+"""Representing the class Square"""
 
 class Square:
-    """Representing the module Square"""
+    """
+    This takes  a size parameter and 
+    store in a private instance attribute named '__size' 
+    using the double underscore prefix
+    """
 
     def __init__(self, size):
-        """Initialization of attribute"""
         self.__size = size
