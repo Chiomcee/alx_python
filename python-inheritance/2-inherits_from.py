@@ -3,8 +3,9 @@
     that inherited from the specified class.
 """
 
+
 def inherits_from(obj, a_class):
-    """Takes two arguments. 
+    """Takes two arguments.
 
         Uses the type func to get the type of the object.
         Uses issubclass func to check if the type of the obj is
@@ -14,5 +15,7 @@ def inherits_from(obj, a_class):
             if obj is a subclass of a_class return - True
             otherwise - False
     """
+    if type(obj) is a_class:
+        return False
 
     return issubclass(type(obj), a_class)
