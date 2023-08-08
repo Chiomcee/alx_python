@@ -121,3 +121,12 @@ class Rectangle(Base):
         if len(args) >= 5:
             self.y = args[4]
 
+    def update(self, *args, **kwargs):
+        if args:
+            attrs = ["id", "width", "height", "x", "y"]
+            for index, arg in enumerate(args):
+                if index < len(attrs):
+                    setattr(self, attrs[index], arg)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
