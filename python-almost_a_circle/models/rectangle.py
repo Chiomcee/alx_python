@@ -122,6 +122,14 @@ class Rectangle(Base):
             self.y = args[4]
 
     def update(self, *args, **kwargs):
+        """Updates the rectangle's attributes.
+
+        Args:
+            *args: The positional arguments can be used to update id,
+                   width, height, x, and y in that order.
+            **kwargs: The keyword arguments can be used to update any
+                   attribute by specifying the attribute name.
+        """
         if args:
             attrs = ["id", "width", "height", "x", "y"]
             for index, arg in enumerate(args):
