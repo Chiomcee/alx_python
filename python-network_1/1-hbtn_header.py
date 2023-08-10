@@ -22,8 +22,6 @@ if __name__ == "__main__":
         # Display the value of 'X-Request-Id'
         if request_id:
             print(request_id)
-        else:
-            print("No 'X-Request-Id' header found in the response.")
     else:
-        print(f"Request failed with status code {response.status_code}.")
+        print("Request failed with status code: {}".format(response.status_code))
 
