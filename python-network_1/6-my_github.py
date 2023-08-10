@@ -14,7 +14,7 @@ password = sys.argv[2]
 url = "https://api.github.com/user"
 
 """Set the headers with Basic Authentication using the username and password"""
-headers = {'Authorization': 'Basic {}:{}'.format(username, password)}
+headers = {'Authorization': 'token {}'.format(password)}
 
 """Send a GET request to the URL with Basic Authentication headers"""
 response = requests.get(url, headers=headers)
@@ -22,10 +22,13 @@ response = requests.get(url, headers=headers)
 """Check if the request was successful"""
 if response.status_code == 200:
     """Retrieve the user id from the response"""
-    user_id = response.json()['id']
+    user_id = response.json().get('id')
 
     """Display the user id"""
-    print(user_id)
+    if user_id:
+        print(user_id)
+    else:
+        print("User ID not found in the response.")
 else:
     """Display None if the request failed"""
     print("None")
