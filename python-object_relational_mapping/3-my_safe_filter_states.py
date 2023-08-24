@@ -18,8 +18,8 @@ if __name__ == "__main__":
 
     # Execute parameterized query
     cursor.execute(
-            "SELECT * FROM states WHERE name=%s ORDER BY id ASC",
-                (argv[4],))
+            "SELECT * FROM states WHERE name=%s ORDER BY id ASC,"
+            (argv[4],))
 
     # Fetch all rows and print results
     rows = cursor.fetchall()
