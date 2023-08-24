@@ -14,18 +14,17 @@ if __name__ == "__main__":
                          passwd=argv[2], db=argv[3])
 
     # Create cursor to execute queries
-    cursor = db.cursor()
+    cur = db.cursor()
 
     # Execute parameterized query
-    cursor.execute(
-            "SELECT * FROM states WHERE name=%s ORDER BY id ASC,"
-            (argv[4],))
+    cur.execute("SELECT * FROM states WHERE name=%s ORDER BY id ASC",
+                (argv[4],))
 
     # Fetch all rows and print results
-    rows = cursor.fetchall()
+    rows = cur.fetchall()
     for row in rows:
         print(row)
 
     # Close cursor and database connection
-    cursor.close()
+    cur.close()
     db.close()
