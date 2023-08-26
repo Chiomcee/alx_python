@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-The script defines a class called State that inherits 
+The script defines a class called State that inherits
 from the declarative_base() class in SQLAlchemy.
 It also imports the necessary modules to define the class.
 """
@@ -9,10 +9,9 @@ from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
 
+
 class State(Base):
     """State class with two attributes"""
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)
-
-
