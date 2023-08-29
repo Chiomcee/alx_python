@@ -34,7 +34,7 @@ def C(text):
     Returns:
     Str:  the string containg the message "C + text."
     """
-    return "C {}".format(text.replace('_',''))
+    return "C {}".format(text.replace('_', ''))
 
 
 if __name__ == '__main__':
