@@ -27,7 +27,7 @@ def hbnb():
     return "HBNB"
 
 @app.route('/c/<text>', strict_slashes=False)
-def C(text):
+def C_text(text):
     """
     Route specifies the root URL '/c/<text>':display "C with a text"
 
