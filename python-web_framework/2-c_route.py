@@ -27,14 +27,14 @@ def hbnb():
     return "HBNB"
 
 @app.route('/c/<text>', strict_slashes=False)
-def C(text):
+def c_(text):
     """
     Route specifies the root URL '/c/<text>':display "C with a text"
 
     Returns:
     Str:  the string containg the message "C + text."
     """
-    return "C {}".format(text.replace('_', ' ').title())
+    return "C {}".format(text.replace('_', ' '))
 
 
 if __name__ == '__main__':
