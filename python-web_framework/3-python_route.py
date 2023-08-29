@@ -37,14 +37,14 @@ def c_text(text):
     return "C {}".format(text.replace('_', ' '))
 
 @app.route('Python/(<test>)', strict_slashes=False)
-def Python(test):
+def Python(text):
     """
     Route specifies the root URL '/Python/(<text>)':display "Pthon" + a text.
 
     Returns:
     Str:  the string containg the message "Python" + text.
     """
-    return "Python {}".format(text.replace("-", ''))
+    return "Python {}".format(text.replace("_", ''))
 
 
 if __name__ == '__main__':
