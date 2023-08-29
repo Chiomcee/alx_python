@@ -36,16 +36,16 @@ def c_text(text):
     """
     return "C {}".format(text.replace('_', ' '))
 
-@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
-@app.route('/python/<test>/', strict_slashes=False)
+@app.route("/python/", defaults={"text": "is cool"}, strict_slashes=False)
+@app.route("/python/<text>", strict_slashes=False)
 def python_text(text):
     """
-    Route specifies the root URL '/Python/<text>':display "Pthon with a text.
+    Route specifies the root URL "/python/(<text>)". Displays a string.
 
     Returns:
-    Str:  the string containg the message "Python" + text.
+    str: A string containing the message "Python " + text.
     """
-    return "Python {}".format(text.replace("_", ''))
+    return "Python " + text.replace("_", " ")
 
 
 if __name__ == '__main__':
