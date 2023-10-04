@@ -1,19 +1,16 @@
 #!/usr/bin/python3
 
-
 import requests
 import sys
 import csv
 
 def get_employee_todo_list(employee_id):
-    # defines a function called `export_employee_todo_list_csv` that takes an `employee_id` as an input
     employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
     todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
 
     # Retrieve employee details
     response = requests.get(employee_url)
     employee_data = response.json()
-    
     employee_name = employee_data['name']
 
     # Retrieve TODO list for the employee
@@ -33,6 +30,7 @@ def get_employee_todo_list(employee_id):
             writer.writerow([employee_id, employee_name, str(task['completed']), task['title']])
 
     print(f"Data exported to {filename} successfully.")
+
 # Entry point of the program
 if __name__ == "__main__":
     if len(sys.argv) == 2:
