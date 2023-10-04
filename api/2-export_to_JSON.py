@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
-import csv
-import requests
-import sys
+#!/usr/bin/python3
 
+import json
+import sys
+import requests
 
 def get_employee_todo_list(employee_id):
     employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
@@ -19,16 +20,12 @@ def get_employee_todo_list(employee_id):
     todos_data = response.json()
 
     # Filter completed tasks
-    completed_tasks = [task for task in todos_data if task['completed']]
+    completed_tasks = [{"task": task['title'], "completed": task['completed'], "username": employee_name} for task in todos_data]
 
-    # Create CSV file
-    filename = f"{employee_id}.csv"
-    with open(filename, mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-
-        for task in completed_tasks:
-            writer.writerow([employee_id, employee_name, str(task['completed']), task['title']])
+    # Create JSON file
+    filename = f"{employee_id}.json"
+    with open(filename, mode='w') as file:
+        json.dump({str(employee_id): completed_tasks}, file)
 
     print(f"Data exported to {filename} successfully.")
 
