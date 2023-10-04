@@ -7,6 +7,7 @@ import sys
 import requests
 
 def get_employee_todo_list(employee_id):
+    # defines a function that takes an `employee_id` as an input
     employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
     todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
 
