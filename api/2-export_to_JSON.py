@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-# Python script to export data in the JSON format
-
+"""
+Python script to export data in the JSON format
+"""
 import json
 import sys
 import requests
+
 
 def get_employee_todo_list(employee_id):
     # defines a function that takes an `employee_id` as an input
