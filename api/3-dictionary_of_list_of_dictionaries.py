@@ -1,38 +1,39 @@
 #!/usr/bin/python3
-"""
-    Exports all tasks from all employees in JSON format.
-"""
 
+"""
+   Module that gets a response of all users
+   and load into a json file
+"""
 
 import json
 import requests
-import sys
 
-if __name__ == "__main__":
-    user_id = sys.argv[1]
-    api_url = "https://jsonplaceholder.typicode.com"
-    user_url = f"{api_url}/users/{user_id}"
-    todos_url = f"{user_url}/todos"
+base_url = 'https://jsonplaceholder.typicode.com'
+users_url = f'{base_url}/users'
+users_response = requests.get(users_url)
+users_data = users_response.json()
 
-    user_response = requests.get(user_url)
-    todos_response = requests.get(todos_url)
+todo_url = f'{base_url}/todos'
+todo_response = requests.get(todo_url)
+todo_data = todo_response.json()
 
-    if user_response.status_code != 200:
-        print("User not found")
-        sys.exit()
+json_data = {}
 
-    user_data = user_response.json()
-    todos_data = todos_response.json()
+for user in users_data:
+    user_id = str(user['id'])
+    username = user['username']
+    user_tasks = []
 
-    todo_dict = {str(user_id): []}
+    for task in todo_data:
+        if task['userId'] == user['id']:
+            user_tasks.append({
+                'username': username,
+                'task': task['title'],
+                'completed': task['completed']
+            })
 
-    for todo in todos_data:
-        task_dict = {
-            "username": user_data.get("username"),
-            "task": todo.get("title"),
-            "completed": todo.get("completed"),
-        }
-        todo_dict[str(user_id)].append(task_dict)
+    json_data[user_id] = user_tasks  # Updated to assign tasks to each user
 
-    with open(f"{user_id}.json", "w") as json_file:
-        json.dump(todo_dict, json_file)
+json_filename = 'todo_all_employees.json'
+with open(json_filename, 'w') as json_file:
+    json.dump(json_data, json_file)
