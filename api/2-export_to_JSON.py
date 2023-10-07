@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-   Module that access API of user's todo list
+   Module that access API of user's todo-list
 """
 import json
 import requests
